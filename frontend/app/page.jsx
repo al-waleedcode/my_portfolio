@@ -9,7 +9,8 @@ const roleSequence = [
   'Zero Trust Operator'
 ];
 
-const projects = [
+// هذه البيانات ستعمل كـ "خطة بديلة" في حال تأخر الخادم في الرد
+const fallbackProjects = [
   {
     title: 'Sentinel SIEM Dashboard',
     description: 'A hardened observability platform with live threat graphs, anomaly detection, and SOC workflow automation.',
@@ -21,16 +22,10 @@ const projects = [
     description: 'Secure API gateway with JWT attestation, rate-limit circuits, and encrypted payload routing.',
     stack: ['TypeScript', 'Express', 'Redis', 'OpenSSL'],
     url: '#contact'
-  },
-  {
-    title: 'Red Team Toolkit',
-    description: 'A modular penetration orchestration suite for workflow automation, reporting, and vulnerability triage.',
-    stack: ['Python', 'Bash', 'Kali', 'Metasploit'],
-    url: '#contact'
   }
 ];
 
-const skillCards = [
+const fallbackSkills = [
   { title: 'Core Languages', items: ['C++', 'JavaScript', 'Python', 'Rust'] },
   { title: 'Infosec Stack', items: ['Wireshark', 'Burp Suite', 'Nmap', 'Splunk'] },
   { title: 'Cloud & Infra', items: ['AWS', 'Kubernetes', 'Terraform', 'Docker'] }
@@ -43,6 +38,31 @@ export default function Page() {
   const [deleting, setDeleting] = useState(false);
   const [cursor, setCursor] = useState(true);
 
+  // المتغيرات الجديدة الخاصة بالبيانات القادمة من الباك إند
+  const [projects, setProjects] = useState(fallbackProjects);
+  const [skills, setSkills] = useState(fallbackSkills);
+  const [name, setName] = useState('Walid');
+
+  // كود الربط السحري (Fetch) مع خادم Render الخاص بك
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const res = await fetch('https://my-portfolio-xu6f.onrender.com/api/profile');
+        if (res.ok) {
+          const data = await res.json();
+          // تحديث الواجهة بالبيانات الحية من الباك إند
+          if (data.name) setName(data.name);
+          if (data.projects && data.projects.length > 0) setProjects(data.projects);
+          if (data.skills && data.skills.length > 0) setSkills(data.skills);
+        }
+      } catch (error) {
+        console.error("Failed to fetch live data, using fallback.", error);
+      }
+    };
+    fetchProfileData();
+  }, []);
+
+  // أنيميشن الكتابة
   useEffect(() => {
     const typeSpeed = deleting ? 45 : 85;
     const timeout = setTimeout(() => {
@@ -86,7 +106,7 @@ export default function Page() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-3">
               <p className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-500/5 px-4 py-2 text-sm uppercase tracking-[0.35em] text-cyan-300/90 shadow-[0_0_40px_rgba(34,211,238,0.05)]">
-                Cyber Portfolio • Dark Mode
+                Cyber Portfolio • {name}
               </p>
               <div className="space-y-4">
                 <div className="max-w-3xl">
@@ -106,7 +126,7 @@ export default function Page() {
                 <span className="inline-flex h-3 w-3 rounded-full bg-emerald-400 shadow-neon animate-pulse" />
                 Online
               </div>
-              <p className="text-sm text-slate-300">System secure. Performance optimized. Interface ready.</p>
+              <p className="text-sm text-slate-300">System secure. Performance optimized. Interface connected.</p>
             </div>
           </div>
 
@@ -130,15 +150,6 @@ export default function Page() {
                 <span className={`h-7 w-1 rounded-sm bg-cyan-300 transition-opacity duration-200 ${cursor ? 'opacity-100' : 'opacity-0'}`} />
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-wrap gap-4 pt-1">
-            <a href="#projects" className="inline-flex items-center justify-center rounded-3xl bg-gradient-to-r from-cyan-400/15 via-emerald-400/10 to-cyan-400/15 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-[0_0_24px_rgba(34,211,238,0.18),0_0_16px_rgba(16,185,129,0.1)] transition duration-300 hover:shadow-[0_0_32px_rgba(34,211,238,0.28),0_0_24px_rgba(16,185,129,0.16)]">
-              Explore projects
-            </a>
-            <a href="#contact" className="inline-flex items-center justify-center rounded-3xl border border-cyan-500/15 bg-transparent px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-slate-200 transition duration-300 hover:border-cyan-300 hover:text-cyan-200">
-              Start a briefing
-            </a>
           </div>
         </div>
 
@@ -168,16 +179,16 @@ export default function Page() {
           </div>
 
           <div className="grid gap-6">
-            {skillCards.map((card) => (
-              <article key={card.title} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_0_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20">
+            {skills.map((card, index) => (
+              <article key={index} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_0_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20">
                 <div className="mb-5 flex items-center justify-between gap-3">
-                  <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+                  <h3 className="text-lg font-semibold text-white">{card.title || card.category}</h3>
                   <span className="rounded-full border border-cyan-500/10 bg-cyan-400/15 px-3 py-1 text-xs uppercase tracking-[0.25em] text-white shadow-[0_0_18px_rgba(34,211,238,0.12)]">
                     Specialized</span>
                 </div>
                 <ul className="grid gap-3 text-sm text-slate-200 sm:grid-cols-2">
-                  {card.items.map((item) => (
-                    <li key={item} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-slate-200 transition duration-300 hover:border-cyan-300/30 hover:bg-cyan-500/10">
+                  {card.items.map((item, i) => (
+                    <li key={i} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-slate-200 transition duration-300 hover:border-cyan-300/30 hover:bg-cyan-500/10">
                       {item}
                     </li>
                   ))}
@@ -197,28 +208,28 @@ export default function Page() {
           </div>
 
           <div className="grid gap-6 xl:grid-cols-3">
-            {projects.map((project) => (
-              <article key={project.title} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-panel backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-cyan-300/20">
+            {projects.map((project, index) => (
+              <article key={index} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-panel backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-cyan-300/20">
                 <div className="absolute inset-x-0 bottom-0 top-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.1),transparent_25%)] opacity-80 mix-blend-screen" />
                 <div className="relative space-y-5">
                   <div className="flex items-center justify-between gap-4 text-slate-300">
                     <span className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">Project</span>
                     <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.35em] text-slate-300 border border-white/10">
-                      live concept</span>
+                      Live / Repo</span>
                   </div>
                   <div>
                     <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
                     <p className="mt-3 text-slate-200 leading-7">{project.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech) => (
-                      <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.25em] text-slate-200 transition duration-300 group-hover:border-cyan-300/20 group-hover:bg-cyan-500/10">
+                    {project.stack && project.stack.map((tech, i) => (
+                      <span key={i} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.25em] text-slate-200 transition duration-300 group-hover:border-cyan-300/20 group-hover:bg-cyan-500/10">
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <a href={project.url} className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-white transition duration-300 group-hover:text-cyan-100">
-                    View brief
+                  <a href={project.url || project.link || '#'} target="_blank" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-white transition duration-300 group-hover:text-cyan-100">
+                    View Project
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400/15 via-emerald-400/10 to-cyan-400/15 text-white transition duration-300 group-hover:bg-cyan-400/20 shadow-[0_0_14px_rgba(34,211,238,0.18),0_0_12px_rgba(16,185,129,0.1)]">
                       →
                     </span>
@@ -229,6 +240,7 @@ export default function Page() {
           </div>
         </section>
 
+        {/* نموذج الاتصال بقي كما هو */}
         <section id="contact" className="mx-auto max-w-4xl rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-panel backdrop-blur-2xl">
           <div className="mb-10 grid gap-6 sm:grid-cols-[1fr_1fr] sm:items-end">
             <div>
