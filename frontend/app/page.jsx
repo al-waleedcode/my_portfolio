@@ -182,7 +182,7 @@ export default function Page() {
           </div>
 
           <div className="grid gap-6">
-            {skills.map((card, index) => (
+            {(skills ?? []).map((card, index) => (
               <article key={index} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_0_60px_-30px_rgba(0,0,0,0.6)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-400/20">
                 <div className="mb-5 flex items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold text-white">{card.title || card.category}</h3>
@@ -190,7 +190,7 @@ export default function Page() {
                     Specialized</span>
                 </div>
                 <ul className="grid gap-3 text-sm text-slate-200 sm:grid-cols-2">
-                  {card.items.map((item, i) => (
+                  {(card.items ?? []).map((item, i) => (
                     <li key={i} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-slate-200 transition duration-300 hover:border-cyan-300/30 hover:bg-cyan-500/10">
                       {item}
                     </li>
@@ -211,7 +211,7 @@ export default function Page() {
           </div>
 
           <div className="grid gap-6 xl:grid-cols-3">
-            {projects.map((project, index) => (
+            {(projects ?? []).map((project, index) => (
               <article key={index} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-panel backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-cyan-300/20">
                 <div className="absolute inset-x-0 bottom-0 top-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.1),transparent_25%)] opacity-80 mix-blend-screen" />
                 <div className="relative space-y-5">
@@ -225,7 +225,7 @@ export default function Page() {
                     <p className="mt-3 text-slate-200 leading-7">{project.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {project.stack && project.stack.map((tech, i) => (
+                    {(project.stack ?? []).map((tech, i) => (
                       <span key={i} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.25em] text-slate-200 transition duration-300 group-hover:border-cyan-300/20 group-hover:bg-cyan-500/10">
                         {tech}
                       </span>
