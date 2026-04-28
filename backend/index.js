@@ -8,24 +8,24 @@ app.use(cors());
 app.use(express.json());
 
 const profileData = {
-  name: 'Cipher Dev',
+  name: 'AL-WALEED ZAIH',
   bio: 'Security-first full-stack engineer with a hacker-chic aesthetic, building resilient applications and developer tooling for modern organizations.',
   skills: ['C++', 'JavaScript', 'Python', 'Next.js'],
   projects: [
     {
       title: 'Sentinel SIEM Dashboard',
       description: 'Hardened observability platform delivering threat analytics, anomaly detection, and secure SOC workflows.',
-      github: 'https://github.com/yourusername/sentinel-siem'
+      github: 'https://github.com/al-waleedcode/sentinel-siem'
     },
     {
       title: 'Protocol Hardened API',
       description: 'Secure API gateway with JWT attestation, rate limiting, and encrypted routing for critical services.',
-      github: 'https://github.com/yourusername/protocol-hardened-api'
+      github: 'https://github.com/al-waleedcode/protocol-hardened-api'
     },
     {
       title: 'Red Team Toolkit',
       description: 'Modular penetration orchestration suite for automation, reporting, and vulnerability triage.',
-      github: 'https://github.com/yourusername/red-team-toolkit'
+      github: 'https://github.com/al-waleedcode/red-team-toolkit'
     }
   ]
 };
