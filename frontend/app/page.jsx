@@ -109,7 +109,7 @@ export default function Page() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-3">
               <p className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-500/5 px-4 py-2 text-sm uppercase tracking-[0.35em] text-cyan-300/90 shadow-[0_0_40px_rgba(34,211,238,0.05)]">
-                Cyber Portfolio • {name}
+                 {name}
               </p>
               <div className="space-y-4">
                 <div className="max-w-3xl">

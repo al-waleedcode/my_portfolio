@@ -9,7 +9,7 @@ app.use(express.json());
 
 const profileData = {
   name: 'AL-WALEED ZAIH',
-  bio: 'Security-first full-stack engineer with a hacker-chic aesthetic, building resilient applications and developer tooling for modern organizations.',
+  bio: 'first full-stack engineer with a hacker-chic aesthetic, building resilient applications and developer tooling for modern organizations.',
   skills: ['C++', 'JavaScript', 'Python', 'Next.js'],
   projects: [
     {
