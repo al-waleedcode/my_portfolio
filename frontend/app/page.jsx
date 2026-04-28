@@ -48,15 +48,18 @@ export default function Page() {
     const fetchProfileData = async () => {
       try {
         const res = await fetch('https://my-portfolio-xu6f.onrender.com/api/profile');
-        if (res.ok) {
-          const data = await res.json();
-          // تحديث الواجهة بالبيانات الحية من الباك إند
-          if (data.name) setName(data.name);
-          if (data.projects && data.projects.length > 0) setProjects(data.projects);
-          if (data.skills && data.skills.length > 0) setSkills(data.skills);
+        if (!res.ok) {
+          throw new Error(`Profile fetch failed with status ${res.status}`);
         }
+
+        const result = await res.json();
+        const profile = result?.data ?? result;
+
+        if (profile.name) setName(profile.name);
+        if (Array.isArray(profile.projects) && profile.projects.length > 0) setProjects(profile.projects);
+        if (Array.isArray(profile.skills) && profile.skills.length > 0) setSkills(profile.skills);
       } catch (error) {
-        console.error("Failed to fetch live data, using fallback.", error);
+        console.error('Failed to fetch live profile data, using fallback.', error);
       }
     };
     fetchProfileData();
