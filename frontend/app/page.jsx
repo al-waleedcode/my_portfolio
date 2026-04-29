@@ -10,22 +10,22 @@ const profileData = {
   ],
   projects: [
     {
-      title: 'Dynamic Task Management System',
-      description: 'A modern web application for managing tasks with real-time updates, built using React and Node.js.',
-      github: 'https://github.com/al-waleedcode/task-management-system',
-      stack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS']
+      title: 'Task Management System',
+      description: 'A comprehensive and dynamic task management and tracking system, designed to provide a seamless user experience and high performance.',
+      github: 'https://github.com/al-waleedcode/Task-Management-System',
+      stack: ['JavaScript', 'Node.js', 'HTML', 'CSS']
     },
     {
-      title: 'Modern Personal Portfolio',
-      description: 'A clean, minimalist portfolio website showcasing web development projects, created with Next.js and Tailwind CSS.',
-      github: 'https://github.com/al-waleedcode/personal-portfolio',
-      stack: ['Next.js', 'Tailwind CSS', 'Vercel']
+      title: 'Modern Landing Page',
+      description: 'A professional landing page with a modern, fully responsive design, built with clean and structured code.',
+      github: 'https://github.com/al-waleedcode/Landing-Page',
+      stack: ['HTML', 'CSS', 'JavaScript']
     },
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with user authentication, payment integration, and responsive design.',
-      github: 'https://github.com/al-waleedcode/ecommerce-platform',
-      stack: ['React', 'Node.js', 'Stripe', 'MongoDB']
+      title: 'Minimalist Personal Portfolio',
+      description: 'My elegant and blazing-fast personal portfolio, built as a Static Site to showcase my skills as a Full-Stack developer.',
+      github: 'https://github.com/al-waleedcode/my-portfolio',
+      stack: ['Next.js', 'Tailwind CSS', 'React']
     }
   ]
 };
@@ -128,7 +128,7 @@ export default function Page() {
                       </span>
                     ))}
                   </div>
-                  <a href={project.github} target="_blank" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-slate-800 hover:text-slate-600 transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-slate-800 hover:text-slate-600 transition-colors">
                     View Project
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all">
                       →
