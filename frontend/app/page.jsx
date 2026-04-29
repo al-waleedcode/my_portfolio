@@ -28,13 +28,13 @@ const fallbackProjects = [
 const fallbackSkills = [
   { title: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
   { title: 'Backend', items: ['Node.js', 'Express', 'Python', 'C++'] },
-  { title: 'Tools', items: ['Git', 'VS Code', 'Figma'] }
+  { title: 'Tools', items: ['Git', 'VS Code', 'Cursor AI', 'Claude Code', 'Figma'] }
 ];
 
 export default function Page() {
   const [projects, setProjects] = useState(fallbackProjects);
   const [skills, setSkills] = useState(fallbackSkills);
-  const [name, setName] = useState('Walid');
+  const [name, setName] = useState('AL-WALEED ZAIH');
   const [title, setTitle] = useState('Full-Stack Web Developer');
 
   // كود الربط السحري (Fetch) مع خادم Render الخاص بك
