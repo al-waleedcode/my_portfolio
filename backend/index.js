@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 const profileData = {
-  name: 'AL-WALEED ZEAH',
+  name: 'AL-WALEED ZAIH',
   title: 'Full-Stack Web Developer',
   skills: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'React', 'Next.js', 'Tailwind CSS', 'C++', 'Python', 'Git'],
   projects: [
