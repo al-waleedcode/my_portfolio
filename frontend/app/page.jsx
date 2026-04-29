@@ -34,7 +34,7 @@ const fallbackSkills = [
 export default function Page() {
   const [projects, setProjects] = useState(fallbackProjects);
   const [skills, setSkills] = useState(fallbackSkills);
-  const [name, setName] = useState('AL-WALEED ZAIH');
+  const [name, setName] = useState('WALEED ZAIH');
   const [title, setTitle] = useState('Full-Stack Web Developer');
 
   // كود الربط السحري (Fetch) مع خادم Render الخاص بك
