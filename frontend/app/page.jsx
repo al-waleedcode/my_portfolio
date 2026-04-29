@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 const roleSequence = [
-  'Full-Stack Web Developer',
+  'AL-WALEED ZAIH',
   'React Specialist',
   'Node.js Developer',
   'UI/UX Enthusiast'
