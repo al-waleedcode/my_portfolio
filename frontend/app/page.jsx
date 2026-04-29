@@ -1,65 +1,36 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
-const roleSequence = [
-  'AL-WALEED ZAIH',
-  'React Specialist',
-  'Node.js Developer',
-  'UI/UX Enthusiast'
-];
-
-// هذه البيانات ستعمل كـ "خطة بديلة" في حال تأخر الخادم في الرد
-const fallbackProjects = [
-  {
-    title: 'Dynamic Task Management System',
-    description: 'A modern web application for managing tasks with real-time updates, built using React and Node.js.',
-    stack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
-    url: '#contact'
-  },
-  {
-    title: 'Modern Personal Portfolio',
-    description: 'A clean, minimalist portfolio website showcasing web development projects, created with Next.js and Tailwind CSS.',
-    stack: ['Next.js', 'Tailwind CSS', 'Vercel'],
-    url: '#contact'
-  }
-];
-
-const fallbackSkills = [
-  { title: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
-  { title: 'Backend', items: ['Node.js', 'Express', 'Python', 'C++'] },
-  { title: 'Tools', items: ['Git', 'VS Code', 'Cursor AI', 'Claude Code', 'Figma'] }
-];
+const profileData = {
+  name: "AL-WALEED ZAIH",
+  title: "Full-Stack Web Developer",
+  skills: [
+    { title: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
+    { title: 'Backend', items: ['Node.js', 'Express', 'Python', 'C++'] },
+    { title: 'Tools', items: ['Git', 'VS Code', 'Figma'] }
+  ],
+  projects: [
+    {
+      title: 'Dynamic Task Management System',
+      description: 'A modern web application for managing tasks with real-time updates, built using React and Node.js.',
+      github: 'https://github.com/al-waleedcode/task-management-system',
+      stack: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS']
+    },
+    {
+      title: 'Modern Personal Portfolio',
+      description: 'A clean, minimalist portfolio website showcasing web development projects, created with Next.js and Tailwind CSS.',
+      github: 'https://github.com/al-waleedcode/personal-portfolio',
+      stack: ['Next.js', 'Tailwind CSS', 'Vercel']
+    },
+    {
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce solution with user authentication, payment integration, and responsive design.',
+      github: 'https://github.com/al-waleedcode/ecommerce-platform',
+      stack: ['React', 'Node.js', 'Stripe', 'MongoDB']
+    }
+  ]
+};
 
 export default function Page() {
-  const [projects, setProjects] = useState(fallbackProjects);
-  const [skills, setSkills] = useState(fallbackSkills);
-  const [name, setName] = useState('WALEED ZAIH');
-  const [title, setTitle] = useState('Full-Stack Web Developer');
-
-  // كود الربط السحري (Fetch) مع خادم Render الخاص بك
-  useEffect(() => {
-    const fetchProfileData = async () => {
-      try {
-        const res = await fetch('https://my-portfolio-xu6f.onrender.com/api/profile');
-        if (!res.ok) {
-          throw new Error(`Profile fetch failed with status ${res.status}`);
-        }
-
-        const result = await res.json();
-        const profile = result?.data ?? result;
-
-        if (profile.name) setName(profile.name);
-        if (profile.title) setTitle(profile.title);
-        if (Array.isArray(profile.projects) && profile.projects.length > 0) setProjects(profile.projects);
-        if (Array.isArray(profile.skills) && profile.skills.length > 0) setSkills(profile.skills);
-      } catch (error) {
-        console.error('Failed to fetch live profile data, using fallback.', error);
-      }
-    };
-    fetchProfileData();
-  }, []);
-
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -70,9 +41,9 @@ export default function Page() {
         <section className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="space-y-4">
-              <p className="text-slate-600 uppercase tracking-widest text-sm">{name}</p>
+              <p className="text-slate-600 uppercase tracking-widest text-sm">{profileData.name}</p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-800 leading-tight">
-                {title}
+                {profileData.title}
               </h1>
               <p className="text-slate-600 text-lg max-w-2xl">
                 Passionate about creating clean, efficient, and user-friendly web applications using modern technologies.
@@ -111,13 +82,13 @@ export default function Page() {
           </div>
 
           <div className="space-y-6">
-            {(skills ?? []).map((card, index) => (
+            {profileData.skills.map((card, index) => (
               <article key={index} className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow">
                 <div className="mb-5">
-                  <h3 className="text-lg font-semibold text-slate-800">{card.title || card.category}</h3>
+                  <h3 className="text-lg font-semibold text-slate-800">{card.title}</h3>
                 </div>
                 <ul className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
-                  {(card.items ?? []).map((item, i) => (
+                  {card.items.map((item, i) => (
                     <li key={i} className="bg-slate-50 rounded-full px-3 py-2 text-center">
                       {item}
                     </li>
@@ -138,7 +109,7 @@ export default function Page() {
           </div>
 
           <div className="grid gap-6 xl:grid-cols-3">
-            {(projects ?? []).map((project, index) => (
+            {profileData.projects.map((project, index) => (
               <article key={index} className="bg-white rounded-2xl shadow-sm p-7 hover:shadow-md transition-shadow group">
                 <div className="space-y-5">
                   <div className="flex items-center justify-between gap-4 text-slate-500">
@@ -151,13 +122,13 @@ export default function Page() {
                     <p className="mt-3 text-slate-600 leading-7">{project.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {(project.stack ?? []).map((tech, i) => (
+                    {project.stack.map((tech, i) => (
                       <span key={i} className="bg-slate-100 rounded-full px-3 py-1 text-xs uppercase tracking-widest text-slate-600">
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <a href={project.github || '#'} target="_blank" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-slate-800 hover:text-slate-600 transition-colors">
+                  <a href={project.github} target="_blank" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-slate-800 hover:text-slate-600 transition-colors">
                     View Project
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all">
                       →
