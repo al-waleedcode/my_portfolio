@@ -10,22 +10,22 @@ const profileData = {
   ],
   projects: [
     {
-      title: 'Task Management System',
-      description: 'A comprehensive and dynamic task management and tracking system, designed to provide a seamless user experience and high performance.',
+      title: 'Dynamic Task Management System',
+      description: 'Built to solve the problem of team disorganization. It provides a real-time, clutter-free environment for tracking progress. I engineered the backend logic to handle instantaneous updates without compromising the frontend speed, achieving top-tier performance metrics.',
       github: 'https://github.com/al-waleedcode/Task-Management-System',
-      stack: ['JavaScript', 'Node.js', 'HTML', 'CSS']
-    },
-    {
-      title: 'Modern Landing Page',
-      description: 'A professional landing page with a modern, fully responsive design, built with clean and structured code.',
-      github: 'https://github.com/al-waleedcode/Landing-Page',
-      stack: ['HTML', 'CSS', 'JavaScript']
+      stack: ['JavaScript', 'Node.js', 'Express', 'CSS']
     },
     {
       title: 'Minimalist Personal Portfolio',
-      description: 'My elegant and blazing-fast personal portfolio, built as a Static Site to showcase my skills as a Full-Stack developer.',
+      description: 'Designed to replace bloated portfolio templates. I wanted a blazing-fast, SEO-optimized static site that loads instantly. By eliminating external API fetches and leveraging Static Site Generation (SSG), I created a seamless, zero-delay user experience.',
       github: 'https://github.com/al-waleedcode/my-portfolio',
       stack: ['Next.js', 'Tailwind CSS', 'React']
+    },
+    {
+      title: 'Modern Landing Page',
+      description: 'Created to help small businesses establish a digital footprint quickly. I focused heavily on mobile responsiveness and clean UI/UX, ensuring the site looks perfect on any device while maintaining highly structured and maintainable code.',
+      github: 'https://github.com/al-waleedcode/Landing-Page',
+      stack: ['HTML5', 'CSS3', 'JavaScript ES6+']
     }
   ]
 };
@@ -67,8 +67,7 @@ export default function Page() {
               <h2 className="mt-3 text-3xl font-semibold text-slate-800">Clean Code, Modern Design</h2>
             </div>
             <p className="text-slate-600 leading-8">
-              I specialize in building responsive, performant web applications with a focus on user experience and clean architecture.
-            </p>
+I am a 20-year-old Full-Stack Web Developer based in Sana'a, Yemen, building high-performance web applications for a global audience. With a strong foundation in modern JavaScript frameworks (React, Next.js) and scalable backend systems (Node.js), I focus on bridging the gap between complex logic and minimalist, intuitive user interfaces. Whether I am optimizing an app to hit a perfect 100/100 Lighthouse score or architecting a secure database, my goal is always the same: delivering seamless digital experiences.            </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition-shadow">
                 <h3 className="text-sm uppercase tracking-widest text-slate-500">Frontend</h3>
