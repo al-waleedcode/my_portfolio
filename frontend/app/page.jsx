@@ -3,27 +3,33 @@
 const profileData = {
   name: "AL-WALEED ZAIH",
   title: "Full-Stack Web Developer",
+  // أضفت روابط التواصل هنا ليسهل التحكم بها
+  socials: {
+    github: "https://github.com/al-waleedcode",
+    linkedin: "https://linkedin.com/in/your-profile", // استبدل هذا برابط حسابك الحقيقي
+    email: "mailto:alwaleedzeeh1@gmail.com"
+  },
   skills: [
     { title: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
     { title: 'Backend', items: ['Node.js', 'Express', 'Python', 'C++'] },
-    { title: 'Tools', items: ['Git', 'VS Code', 'Figma'] }
+    { title: 'Tools', items: ['Git', 'VS Code', 'Figma', 'Cursor AI'] }
   ],
   projects: [
     {
       title: 'Task Management System',
-      description: 'A comprehensive and dynamic task management and tracking system, designed to provide a seamless user experience and high performance.',
+      description: 'A comprehensive and dynamic task management system designed to provide a seamless user experience and high performance for modern teams.',
       github: 'https://github.com/al-waleedcode/Task-Management-System',
       stack: ['JavaScript', 'Node.js', 'HTML', 'CSS']
     },
     {
       title: 'Modern Landing Page',
-      description: 'A professional landing page with a modern, fully responsive design, built with clean and structured code.',
+      description: 'A professional, fully responsive landing page with a modern design aesthetic, built using clean and highly structured code.',
       github: 'https://github.com/al-waleedcode/Landing-Page',
       stack: ['HTML', 'CSS', 'JavaScript']
     },
     {
       title: 'Minimalist Personal Portfolio',
-      description: 'My elegant and blazing-fast personal portfolio, built as a Static Site to showcase my skills as a Full-Stack developer.',
+      description: 'A blazing-fast, SEO-optimized personal portfolio built as a static site to showcase full-stack capabilities with maximum performance.',
       github: 'https://github.com/al-waleedcode/my-portfolio',
       stack: ['Next.js', 'Tailwind CSS', 'React']
     }
@@ -36,103 +42,100 @@ export default function Page() {
   };
 
   return (
-    <main className="bg-slate-50 min-h-screen py-24 px-6">
-      <div className="max-w-6xl mx-auto space-y-24">
-        <section className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div className="space-y-4">
-              <p className="text-slate-600 uppercase tracking-widest text-sm">{profileData.name}</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-800 leading-tight">
-                {profileData.title}
-              </h1>
-              <p className="text-slate-600 text-lg max-w-2xl">
-                Passionate about creating clean, efficient, and user-friendly web applications using modern technologies.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl shadow-sm p-6 text-center min-w-[220px]">
-              <span className="text-xs uppercase tracking-widest text-slate-500">Status</span>
-              <div className="flex items-center justify-center gap-2 text-2xl font-semibold text-slate-800 mt-2">
-                <span className="inline-flex h-3 w-3 rounded-full bg-green-500 animate-pulse" />
-                Available
+    <main className="bg-slate-50 min-h-screen py-20 px-6 font-sans">
+      <div className="max-w-6xl mx-auto space-y-20">
+        
+        {/* Header / Intro Section */}
+        <section className="bg-white rounded-3xl shadow-sm p-10 md:p-16 border border-slate-100">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+            <div className="space-y-6">
+              <div className="inline-block bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-[0.2em]">
+                {profileData.name}
               </div>
-              <p className="text-sm text-slate-600 mt-2">Ready to collaborate on exciting projects.</p>
+              <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight">
+                Hi, I'm Al-Waleed.
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed">
+                A <span className="text-slate-900 font-medium">Full-Stack Web Developer</span> passionate about building clean, modern, and efficient web applications using Next.js and Node.js.
+              </p>
+              <div className="flex gap-4 pt-4">
+                <a href={profileData.socials.github} target="_blank" className="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-slate-800 transition-all font-medium">
+                  GitHub
+                </a>
+                <a href="#contact" className="border border-slate-200 px-8 py-3 rounded-full hover:bg-slate-50 transition-all font-medium text-slate-800">
+                  Contact Me
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="grid gap-8 lg:grid-cols-[1.3fr_0.9fr]">
-          <div className="bg-white rounded-2xl shadow-sm p-8">
-            <div className="mb-6">
-              <p className="text-xs uppercase tracking-widest text-slate-500">About</p>
-              <h2 className="mt-3 text-3xl font-semibold text-slate-800">Clean Code, Modern Design</h2>
-            </div>
-            <p className="text-slate-600 leading-8">
-              I specialize in building responsive, performant web applications with a focus on user experience and clean architecture.
+        {/* About & Skills Section */}
+        <section className="grid gap-10 lg:grid-cols-2">
+          <div className="bg-white rounded-3xl shadow-sm p-10 border border-slate-100 space-y-6">
+            <h2 className="text-3xl font-bold text-slate-900">Clean Code, Modern Design</h2>
+            <p className="text-slate-600 leading-8 text-lg">
+              I specialize in building responsive, high-performance web applications. My focus is on creating exceptional user experiences through clean architecture and scalable backend solutions.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition-shadow">
-                <h3 className="text-sm uppercase tracking-widest text-slate-500">Frontend</h3>
-                <p className="mt-4 text-slate-600">React, Next.js, and Tailwind CSS for beautiful, interactive interfaces.</p>
-              </div>
-              <div className="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition-shadow">
-                <h3 className="text-sm uppercase tracking-widest text-slate-500">Backend</h3>
-                <p className="mt-4 text-slate-600">Node.js and Express for robust, scalable server-side solutions.</p>
-              </div>
+            <div className="grid grid-cols-2 gap-4">
+               <div className="p-4 bg-slate-50 rounded-2xl">
+                  <p className="text-slate-900 font-bold text-2xl">2025</p>
+                  <p className="text-slate-500 text-sm">Graduated</p>
+               </div>
+               <div className="p-4 bg-slate-50 rounded-2xl">
+                  <p className="text-slate-900 font-bold text-2xl">Full-Stack</p>
+                  <p className="text-slate-500 text-sm">Focused</p>
+               </div>
             </div>
           </div>
 
           <div className="space-y-6">
-            {profileData.skills.map((card, index) => (
-              <article key={index} className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow">
-                <div className="mb-5">
-                  <h3 className="text-lg font-semibold text-slate-800">{card.title}</h3>
-                </div>
-                <ul className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
-                  {card.items.map((item, i) => (
-                    <li key={i} className="bg-slate-50 rounded-full px-3 py-2 text-center">
+            {profileData.skills.map((skillGroup, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-sm p-8 border border-slate-100">
+                <h3 className="text-lg font-bold text-slate-900 mb-4">{skillGroup.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {skillGroup.items.map((item, i) => (
+                    <span key={i} className="bg-slate-50 text-slate-700 px-4 py-2 rounded-xl text-sm font-medium border border-slate-100">
                       {item}
-                    </li>
+                    </span>
                   ))}
-                </ul>
-              </article>
+                </div>
+              </div>
             ))}
           </div>
         </section>
 
-        <section id="projects">
-          <div className="mb-8">
-            <p className="text-xs uppercase tracking-widest text-slate-500">Projects</p>
-            <h2 className="text-3xl font-semibold text-slate-800">Featured Work</h2>
-            <p className="max-w-2xl text-slate-600 mt-2">
-              A showcase of web development projects demonstrating modern technologies and clean design.
+        {/* Projects Section */}
+        <section id="projects" className="space-y-10">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl font-bold text-slate-900">Featured Work</h2>
+            <p className="text-slate-500 max-w-xl mx-auto">
+              A selection of my recent full-stack projects, showcasing modern technologies and clean design.
             </p>
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {profileData.projects.map((project, index) => (
-              <article key={index} className="bg-white rounded-2xl shadow-sm p-7 hover:shadow-md transition-shadow group">
-                <div className="space-y-5">
-                  <div className="flex items-center justify-between gap-4 text-slate-500">
-                    <span className="text-xs uppercase tracking-widest">Project</span>
-                    <span className="bg-slate-100 rounded-full px-3 py-1 text-xs uppercase tracking-widest">
-                      View</span>
+              <article key={index} className="bg-white rounded-3xl shadow-sm p-8 border border-slate-100 hover:shadow-xl transition-all group">
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Project</span>
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold text-slate-800">{project.title}</h3>
-                    <p className="mt-3 text-slate-600 leading-7">{project.description}</p>
-                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{project.title}</h3>
+                  <p className="text-slate-600 leading-relaxed text-sm h-20 overflow-hidden">
+                    {project.description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech, i) => (
-                      <span key={i} className="bg-slate-100 rounded-full px-3 py-1 text-xs uppercase tracking-widest text-slate-600">
-                        {tech}
+                      <span key={i} className="text-[10px] font-bold text-slate-500 uppercase">
+                        #{tech}
                       </span>
                     ))}
                   </div>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-slate-800 hover:text-slate-600 transition-colors">
-                    View Project
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all">
-                      →
-                    </span>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full pt-4 border-t border-slate-50 group-hover:border-slate-100 transition-colors text-slate-900 font-bold">
+                    View on GitHub
+                    <span>→</span>
                   </a>
                 </div>
               </article>
@@ -140,46 +143,25 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="contact" className="bg-white rounded-2xl shadow-sm p-8">
-          <div className="mb-10 grid gap-6 sm:grid-cols-[1fr_1fr] sm:items-end">
-            <div>
-              <p className="text-xs uppercase tracking-widest text-slate-500">Contact</p>
-              <h2 className="mt-3 text-3xl font-semibold text-slate-800">Let's Work Together</h2>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-4 text-sm text-slate-600">
-              <p className="font-medium text-slate-800">Get In Touch</p>
-              <p className="mt-2 leading-6">
-                Ready to discuss your next web development project? Send me a message and let's create something amazing.
-              </p>
-            </div>
+        {/* Contact Section */}
+        <section id="contact" className="bg-slate-900 rounded-[3rem] p-10 md:p-20 text-white text-center space-y-10">
+          <h2 className="text-4xl md:text-6xl font-bold">Ready to build something amazing?</h2>
+          <p className="text-slate-400 text-xl max-w-2xl mx-auto">
+            I'm currently available for new projects and collaborations. Let's talk about your next big idea.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <a href={profileData.socials.email} className="bg-white text-slate-900 px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform">
+              Send an Email
+            </a>
+            <a href={profileData.socials.linkedin} className="bg-blue-600 text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform">
+              LinkedIn
+            </a>
           </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6 bg-slate-50 rounded-2xl p-8">
-            <div className="grid gap-5 md:grid-cols-2">
-              <label className="space-y-2 text-sm text-slate-600">
-                <span className="text-slate-800">Name</span>
-                <input type="text" placeholder="Your Name" className="w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-slate-800 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all" />
-              </label>
-              <label className="space-y-2 text-sm text-slate-600">
-                <span className="text-slate-800">Email</span>
-                <input type="email" placeholder="your@email.com" className="w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-slate-800 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all" />
-              </label>
-            </div>
-            <label className="space-y-2 text-sm text-slate-600">
-              <span className="text-slate-800">Message</span>
-              <textarea rows="5" placeholder="Tell me about your project..." className="w-full rounded-2xl bg-white border border-slate-200 px-4 py-4 text-slate-800 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all" />
-            </label>
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-white rounded-2xl p-6 text-sm text-slate-600">
-              <div>
-                <p className="text-slate-800">Response Time</p>
-                <p className="text-slate-600">I'll get back to you within 24 hours.</p>
-              </div>
-              <button type="submit" className="bg-slate-900 text-white rounded-full px-6 py-2 hover:bg-slate-800 transition-all">
-                Send Message
-              </button>
-            </div>
-          </form>
         </section>
+
+        <footer className="py-10 text-center text-slate-400 text-sm">
+          © {new Date().getFullYear()} {profileData.name}. Built with Next.js & Tailwind CSS.
+        </footer>
       </div>
     </main>
   );
