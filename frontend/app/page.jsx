@@ -1,185 +1,330 @@
-'use client';
+// Server Component - NO 'use client' هنا!
+import ContactForm from '../components/ContactForm';
 
-const profileData = {
-  name: "AL-WALEED ZAIH",
-  title: "Full-Stack Web Developer",
+const profile = {
+  name: 'AL-WALEED ZAIH',
+  title: 'Full-Stack Web Developer',
+  age: 20,
+  location: "Sana'a, Yemen",
+  bio: "Building high-performance web applications for a global audience. I bridge the gap between complex logic and minimalist, intuitive user interfaces — from a perfect 100/100 Lighthouse score to secure database architecture.",
+  github: 'https://github.com/al-waleedcode',
   skills: [
-    { title: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
-    { title: 'Backend', items: ['Node.js', 'Express', 'Python', 'C++'] },
-    { title: 'Tools', items: ['Git', 'VS Code', 'Figma'] }
+    { category: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
+    { category: 'Backend',  items: ['Node.js', 'Express', 'Python', 'C++'] },
+    { category: 'Tools',    items: ['Git', 'VS Code', 'Figma'] },
   ],
   projects: [
     {
+      id: '01',
       title: 'Dynamic Task Management System',
-      description: 'Built to solve the problem of team disorganization. It provides a real-time, clutter-free environment for tracking progress. I engineered the backend logic to handle instantaneous updates without compromising the frontend speed, achieving top-tier performance metrics.',
+      description: 'Real-time task tracking engineered for speed. Instantaneous backend updates without compromising frontend performance — achieving top-tier Lighthouse metrics.',
       github: 'https://github.com/al-waleedcode/Task-Management-System',
-      stack: ['JavaScript', 'Node.js', 'Express', 'CSS']
+      stack: ['JavaScript', 'Node.js', 'Express', 'CSS'],
     },
     {
+      id: '02',
       title: 'Minimalist Personal Portfolio',
-      description: 'Designed to replace bloated portfolio templates. I wanted a blazing-fast, SEO-optimized static site that loads instantly. By eliminating external API fetches and leveraging Static Site Generation (SSG), I created a seamless, zero-delay user experience.',
+      description: 'Blazing-fast, SEO-optimized static site. Zero external API fetches, Static Site Generation, zero-delay experience.',
       github: 'https://github.com/al-waleedcode/my-portfolio',
-      stack: ['Next.js', 'Tailwind CSS', 'React']
+      stack: ['Next.js', 'Tailwind CSS', 'React'],
     },
     {
+      id: '03',
       title: 'Modern Landing Page',
-      description: 'Created to help small businesses establish a digital footprint quickly. I focused heavily on mobile responsiveness and clean UI/UX, ensuring the site looks perfect on any device while maintaining highly structured and maintainable code.',
+      description: 'A high-conversion landing page for small businesses. Mobile-first responsive design with clean, maintainable code architecture.',
       github: 'https://github.com/al-waleedcode/Landing-Page',
-      stack: ['HTML5', 'CSS3', 'JavaScript ES6+']
-    }
-  ]
+      stack: ['HTML5', 'CSS3', 'JavaScript ES6+'],
+    },
+  ],
 };
 
 export default function Page() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   return (
-    <main className="bg-slate-50 min-h-screen py-24 px-6">
-      <div className="max-w-6xl mx-auto space-y-24">
-        <section className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div className="space-y-4">
-              <p className="text-slate-600 uppercase tracking-widest text-sm">{profileData.name}</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-800 leading-tight">
-                {profileData.title}
-              </h1>
-              <p className="text-slate-600 text-lg max-w-2xl">
-                Passionate about creating clean, efficient, and user-friendly web applications using modern technologies.
+    <main className="relative z-10 min-h-screen">
+
+      {/* ── NAV ── */}
+      <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-12 py-4 border-b border-slate-800/60 backdrop-blur-xl bg-slate-950/70">
+        <span className="font-mono text-cyan-400 text-sm tracking-widest animate-flicker">
+          &lt;AW/&gt;
+        </span>
+        <ul className="hidden md:flex items-center gap-8">
+          {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
+            <li key={item}>
+              <a
+                href={`#${item.toLowerCase()}`}
+                className="font-mono text-xs text-slate-500 hover:text-cyan-400 transition-colors tracking-widest uppercase"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-xs border border-slate-700 hover:border-cyan-500/50 text-slate-400 hover:text-cyan-400 px-4 py-2 rounded transition-all duration-300 hover:shadow-neon-sm"
+        >
+          GitHub ↗
+        </a>
+      </nav>
+
+      {/* ── HERO ── */}
+      <section className="grid-bg relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24 pb-16">
+
+        {/* Corner decorations */}
+        <div className="absolute top-24 left-6 w-16 h-16 border-l-2 border-t-2 border-cyan-500/20 pointer-events-none" />
+        <div className="absolute bottom-16 right-6 w-16 h-16 border-r-2 border-b-2 border-emerald-500/20 pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto w-full">
+          <div className="anim-hidden animate-fade-up">
+            <span className="font-mono text-xs text-emerald-400 tracking-[0.3em] uppercase">
+              ● Available for work
+            </span>
+          </div>
+
+          <h1 className="mt-6 font-bold leading-none tracking-tight anim-hidden animate-fade-up delay-100">
+            <span className="block text-slate-500 font-mono text-lg md:text-xl mb-2 font-normal">
+              &gt; Hello, I'm
+            </span>
+            <span className="block text-5xl md:text-7xl lg:text-8xl text-white">
+              {profile.name.split(' ').map((word, i) => (
+                <span key={i} className={i === 1 ? 'text-gradient-neon' : ''}>{word} </span>
+              ))}
+            </span>
+          </h1>
+
+          <div className="mt-4 flex items-center gap-3 anim-hidden animate-fade-up delay-200">
+            <span className="h-px w-12 bg-cyan-500/40" />
+            <p className="font-mono text-slate-400 text-sm md:text-base tracking-wider">
+              {profile.title}
+            </p>
+          </div>
+
+          <p className="mt-8 text-slate-400 text-lg leading-relaxed max-w-2xl anim-hidden animate-fade-up delay-300">
+            {profile.bio}
+          </p>
+
+          <div className="mt-10 flex flex-wrap gap-4 anim-hidden animate-fade-up delay-400">
+            <a
+              href="#projects"
+              className="group relative bg-cyan-500/10 border border-cyan-500/30 hover:border-cyan-400 text-cyan-300 font-mono text-sm px-7 py-3.5 rounded-lg transition-all duration-300 hover:shadow-neon overflow-hidden"
+            >
+              <span className="relative z-10">[ View_Projects() ]</span>
+              <span className="absolute inset-0 bg-cyan-500/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+            </a>
+            <a
+              href="#contact"
+              className="border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-slate-200 font-mono text-sm px-7 py-3.5 rounded-lg transition-all duration-300"
+            >
+              Contact →
+            </a>
+          </div>
+
+          {/* Stats row */}
+          <div className="mt-16 grid grid-cols-3 gap-4 max-w-lg anim-hidden animate-fade-up delay-500">
+            {[
+              { num: '3+', label: 'Projects' },
+              { num: '100', label: 'Lighthouse Score' },
+              { num: '24h', label: 'Response Time' },
+            ].map(({ num, label }) => (
+              <div key={label} className="border border-slate-800 rounded-lg p-4 text-center bg-slate-900/30">
+                <div className="font-mono text-2xl font-bold text-cyan-400">{num}</div>
+                <div className="font-mono text-xs text-slate-600 mt-1 uppercase tracking-widest">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT ── */}
+      <section id="about" className="px-6 md:px-12 py-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="font-mono text-cyan-400 text-sm">01.</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">About</h2>
+            <span className="flex-1 h-px bg-slate-800" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="space-y-5 text-slate-400 leading-relaxed">
+              <p>
+                I'm a <span className="text-cyan-400 font-mono">20-year-old</span> Full-Stack developer
+                based in <span className="text-emerald-400">{profile.location}</span>, building web applications
+                that serve a global audience.
+              </p>
+              <p>
+                My approach: start with the problem, architect a clean solution, then obsess over
+                the details — performance, accessibility, and user experience all matter equally.
+              </p>
+              <p>
+                Whether it's a React frontend hitting
+                <span className="text-cyan-400 font-mono"> 100/100 Lighthouse</span> or a Node.js
+                backend handling real-time updates — I care about the craft.
               </p>
             </div>
-            <div className="bg-white rounded-2xl shadow-sm p-6 text-center min-w-[220px]">
-              <span className="text-xs uppercase tracking-widest text-slate-500">Status</span>
-              <div className="flex items-center justify-center gap-2 text-2xl font-semibold text-slate-800 mt-2">
-                <span className="inline-flex h-3 w-3 rounded-full bg-green-500 animate-pulse" />
-                Available
-              </div>
-              <p className="text-sm text-slate-600 mt-2">Ready to collaborate on exciting projects.</p>
-            </div>
-          </div>
-        </section>
 
-        <section className="grid gap-8 lg:grid-cols-[1.3fr_0.9fr]">
-          <div className="bg-white rounded-2xl shadow-sm p-8">
-            <div className="mb-6">
-              <p className="text-xs uppercase tracking-widest text-slate-500">About</p>
-              <h2 className="mt-3 text-3xl font-semibold text-slate-800">Clean Code, Modern Design</h2>
-            </div>
-            <p className="text-slate-600 leading-8">
-I am a 20-year-old Full-Stack Web Developer based in Sana'a, Yemen, building high-performance web applications for a global audience. With a strong foundation in modern JavaScript frameworks (React, Next.js) and scalable backend systems (Node.js), I focus on bridging the gap between complex logic and minimalist, intuitive user interfaces. Whether I am optimizing an app to hit a perfect 100/100 Lighthouse score or architecting a secure database, my goal is always the same: delivering seamless digital experiences.            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition-shadow">
-                <h3 className="text-sm uppercase tracking-widest text-slate-500">Frontend</h3>
-                <p className="mt-4 text-slate-600">React, Next.js, and Tailwind CSS for beautiful, interactive interfaces.</p>
+            {/* Terminal-style info box */}
+            <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 font-mono text-sm neon-border">
+              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-800">
+                <span className="w-3 h-3 rounded-full bg-red-500/70" />
+                <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                <span className="w-3 h-3 rounded-full bg-green-500/70" />
+                <span className="ml-2 text-slate-600 text-xs">profile.json</span>
               </div>
-              <div className="bg-white rounded-2xl shadow-sm p-5 hover:shadow-md transition-shadow">
-                <h3 className="text-sm uppercase tracking-widest text-slate-500">Backend</h3>
-                <p className="mt-4 text-slate-600">Node.js and Express for robust, scalable server-side solutions.</p>
+              <div className="space-y-2 text-slate-400">
+                <div><span className="text-cyan-400">"name"</span>: <span className="text-emerald-300">"{profile.name}"</span>,</div>
+                <div><span className="text-cyan-400">"age"</span>: <span className="text-amber-300">{profile.age}</span>,</div>
+                <div><span className="text-cyan-400">"location"</span>: <span className="text-emerald-300">"{profile.location}"</span>,</div>
+                <div><span className="text-cyan-400">"role"</span>: <span className="text-emerald-300">"Full-Stack Developer"</span>,</div>
+                <div><span className="text-cyan-400">"status"</span>: <span className="text-emerald-400">"available"</span><span className="animate-blink text-cyan-400">_</span></div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="space-y-6">
-            {profileData.skills.map((card, index) => (
-              <article key={index} className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow">
-                <div className="mb-5">
-                  <h3 className="text-lg font-semibold text-slate-800">{card.title}</h3>
-                </div>
-                <ul className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
-                  {card.items.map((item, i) => (
-                    <li key={i} className="bg-slate-50 rounded-full px-3 py-2 text-center">
+      {/* ── SKILLS ── */}
+      <section id="skills" className="px-6 md:px-12 py-24 bg-slate-900/20">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="font-mono text-cyan-400 text-sm">02.</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Skills</h2>
+            <span className="flex-1 h-px bg-slate-800" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {profile.skills.map(({ category, items }) => (
+              <div
+                key={category}
+                className="group bg-slate-900/60 border border-slate-800 hover:border-cyan-500/30 rounded-xl p-6 transition-all duration-300 hover:shadow-neon-sm"
+              >
+                <h3 className="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-5">
+                  // {category}
+                </h3>
+                <ul className="space-y-3">
+                  {items.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-slate-400 text-sm group-hover:text-slate-300 transition-colors">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/60 flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
-              </article>
+              </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="projects">
-          <div className="mb-8">
-            <p className="text-xs uppercase tracking-widest text-slate-500">Projects</p>
-            <h2 className="text-3xl font-semibold text-slate-800">Featured Work</h2>
-            <p className="max-w-2xl text-slate-600 mt-2">
-              A showcase of web development projects demonstrating modern technologies and clean design.
-            </p>
+      {/* ── PROJECTS ── */}
+      <section id="projects" className="px-6 md:px-12 py-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="font-mono text-cyan-400 text-sm">03.</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Projects</h2>
+            <span className="flex-1 h-px bg-slate-800" />
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-3">
-            {profileData.projects.map((project, index) => (
-              <article key={index} className="bg-white rounded-2xl shadow-sm p-7 hover:shadow-md transition-shadow group">
-                <div className="space-y-5">
-                  <div className="flex items-center justify-between gap-4 text-slate-500">
-                    <span className="text-xs uppercase tracking-widest">Project</span>
-                    <span className="bg-slate-100 rounded-full px-3 py-1 text-xs uppercase tracking-widest">
-                      View</span>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold text-slate-800">{project.title}</h3>
-                    <p className="mt-3 text-slate-600 leading-7">{project.description}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech, i) => (
-                      <span key={i} className="bg-slate-100 rounded-full px-3 py-1 text-xs uppercase tracking-widest text-slate-600">
+          <div className="space-y-6">
+            {profile.projects.map((project) => (
+              <article
+                key={project.id}
+                className="group grid md:grid-cols-[80px_1fr_auto] gap-6 items-start bg-slate-900/40 border border-slate-800 hover:border-cyan-500/30 rounded-xl p-6 md:p-8 transition-all duration-300 hover:shadow-neon-sm"
+              >
+                <div className="font-mono text-5xl font-bold text-slate-800 group-hover:text-slate-700 transition-colors leading-none select-none">
+                  {project.id}
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-100 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-400 leading-relaxed text-sm">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-xs bg-slate-800/80 text-slate-400 px-3 py-1 rounded-full border border-slate-700"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-slate-800 hover:text-slate-600 transition-colors">
-                    View Project
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all">
-                      →
-                    </span>
-                  </a>
                 </div>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 flex items-center gap-2 font-mono text-xs text-slate-500 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/40 px-4 py-2 rounded-lg transition-all duration-300 self-start"
+                >
+                  View ↗
+                </a>
               </article>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="contact" className="bg-white rounded-2xl shadow-sm p-8">
-          <div className="mb-10 grid gap-6 sm:grid-cols-[1fr_1fr] sm:items-end">
-            <div>
-              <p className="text-xs uppercase tracking-widest text-slate-500">Contact</p>
-              <h2 className="mt-3 text-3xl font-semibold text-slate-800">Let's Work Together</h2>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-4 text-sm text-slate-600">
-              <p className="font-medium text-slate-800">Get In Touch</p>
-              <p className="mt-2 leading-6">
-                Ready to discuss your next web development project? Send me a message and let's create something amazing.
-              </p>
-            </div>
+      {/* ── CONTACT ── */}
+      <section id="contact" className="px-6 md:px-12 py-24 bg-slate-900/20">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="font-mono text-cyan-400 text-sm">04.</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Contact</h2>
+            <span className="flex-1 h-px bg-slate-800" />
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 bg-slate-50 rounded-2xl p-8">
-            <div className="grid gap-5 md:grid-cols-2">
-              <label className="space-y-2 text-sm text-slate-600">
-                <span className="text-slate-800">Name</span>
-                <input type="text" placeholder="Your Name" className="w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-slate-800 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all" />
-              </label>
-              <label className="space-y-2 text-sm text-slate-600">
-                <span className="text-slate-800">Email</span>
-                <input type="email" placeholder="your@email.com" className="w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 text-slate-800 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all" />
-              </label>
-            </div>
-            <label className="space-y-2 text-sm text-slate-600">
-              <span className="text-slate-800">Message</span>
-              <textarea rows="5" placeholder="Tell me about your project..." className="w-full rounded-2xl bg-white border border-slate-200 px-4 py-4 text-slate-800 outline-none focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10 transition-all" />
-            </label>
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-white rounded-2xl p-6 text-sm text-slate-600">
-              <div>
-                <p className="text-slate-800">Response Time</p>
-                <p className="text-slate-600">I'll get back to you within 24 hours.</p>
+          <div className="grid md:grid-cols-[1fr_1.4fr] gap-12 items-start">
+            <div className="space-y-6">
+              <p className="text-slate-400 leading-relaxed">
+                Have a project in mind? Looking for a developer to join your team?
+                I'm currently <span className="text-emerald-400">available</span> and
+                open to new opportunities.
+              </p>
+              <div className="space-y-3 font-mono text-sm">
+                <div className="flex items-center gap-3 text-slate-400">
+                  <span className="text-cyan-400">→</span>
+                  <span>Response within 24 hours</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-400">
+                  <span className="text-cyan-400">→</span>
+                  <span>Open to remote work globally</span>
+                </div>
+                <div className="flex items-center gap-3 text-slate-400">
+                  <span className="text-cyan-400">→</span>
+                  <span>Freelance & full-time welcome</span>
+                </div>
               </div>
-              <button type="submit" className="bg-slate-900 text-white rounded-full px-6 py-2 hover:bg-slate-800 transition-all">
-                Send Message
-              </button>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-mono text-sm text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/40 px-5 py-3 rounded-lg transition-all duration-300"
+              >
+                GitHub Profile ↗
+              </a>
             </div>
-          </form>
-        </section>
-      </div>
+
+            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 neon-border">
+              <div className="flex items-center gap-2 mb-6 pb-4 border-b border-slate-800">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-mono text-xs text-slate-500 tracking-widest">SEND_MESSAGE.exe</span>
+              </div>
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer className="border-t border-slate-800/60 px-6 md:px-12 py-8 flex flex-wrap items-center justify-between gap-4">
+        <span className="font-mono text-xs text-slate-600">
+          © 2025 {profile.name} — Built with Next.js & Tailwind CSS
+        </span>
+        <span className="font-mono text-xs text-slate-700 animate-flicker">
+          &lt;AW/&gt;
+        </span>
+      </footer>
+
     </main>
   );
 }
