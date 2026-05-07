@@ -436,7 +436,7 @@ export default function Page() {
                     </div>
                   </a>
                   <a
-                    href="https://linkedin.com/in/YOUR_LINKEDIN"
+                    href="https://linkedin.com/in/alwaleed-zaih"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
@@ -446,7 +446,7 @@ export default function Page() {
                     </svg>
                     <div>
                       <p className="font-semibold text-slate-100">LinkedIn</p>
-                      <p className="text-slate-500">linkedin.com/in/YOUR_LINKEDIN</p>
+                      <p className="text-slate-500">linkedin.com/in/alwaleed-zaih</p>
                     </div>
                   </a>
                   <a
