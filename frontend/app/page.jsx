@@ -1,4 +1,5 @@
 // Server Component - NO 'use client' هنا!
+import Image from 'next/image';
 import ContactForm from '../components/ContactForm';
 
 const profile = {
@@ -9,23 +10,48 @@ const profile = {
   bio: "Building high-performance web applications for a global audience. I bridge the gap between complex logic and minimalist, intuitive user interfaces — from a perfect 100/100 Lighthouse score to secure database architecture.",
   github: 'https://github.com/al-waleedcode',
   skills: [
-    { category: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
-    { category: 'Backend',  items: ['Node.js', 'Express', 'Python', 'C++'] },
-    { category: 'Tools',    items: ['Git', 'VS Code', 'Figma'] },
+    {
+      category: 'Frontend',
+      items: [
+        { name: 'HTML', level: 'Proficient' },
+        { name: 'CSS', level: 'Proficient' },
+        { name: 'JavaScript', level: 'Proficient' },
+        { name: 'Tailwind CSS', level: 'Proficient' },
+        { name: 'Next.js', level: 'Intermediate' },
+      ],
+    },
+    {
+      category: 'Backend',
+      items: [
+        { name: 'Node.js', level: 'Proficient' },
+        { name: 'Express', level: 'Proficient' },
+      ],
+    },
+    {
+      category: 'Tools',
+      items: [
+        { name: 'Git', level: 'Proficient' },
+        { name: 'VS Code', level: 'Intermediate' },
+      ],
+    },
   ],
   projects: [
     {
       id: '01',
       title: 'Dynamic Task Management System',
-      description: 'Real-time task tracking engineered for speed. Instantaneous backend updates without compromising frontend performance — achieving top-tier Lighthouse metrics.',
+      description: 'A full-stack task manager with a Node.js/Express backend and vanilla JS frontend. Features: add, edit, delete, and filter tasks — with data saved to a real database.',
       github: 'https://github.com/al-waleedcode/Task-Management-System',
+      liveDemo: '#',
+      image: '/task-manager.webp',
       stack: ['JavaScript', 'Node.js', 'Express', 'CSS'],
     },
     {
       id: '02',
       title: 'Minimalist Personal Portfolio',
-      description: 'Blazing-fast, SEO-optimized static site. Zero external API fetches, Static Site Generation, zero-delay experience.',
+      description: 'Built with Next.js & Tailwind CSS — achieved 100/100 Lighthouse Score using Static Site Generation.',
       github: 'https://github.com/al-waleedcode/my-portfolio',
+      liveDemo: '#',
+      image: '/portfolio.webp',
       stack: ['Next.js', 'Tailwind CSS', 'React'],
     },
     {
@@ -33,6 +59,8 @@ const profile = {
       title: 'Modern Landing Page',
       description: 'A high-conversion landing page for small businesses. Mobile-first responsive design with clean, maintainable code architecture.',
       github: 'https://github.com/al-waleedcode/Landing-Page',
+      liveDemo: '#',
+      image: '/landing-page.webp',
       stack: ['HTML5', 'CSS3', 'JavaScript ES6+'],
     },
   ],
@@ -83,56 +111,78 @@ export default function Page() {
             </span>
           </div>
 
-          <h1 className="mt-6 font-bold leading-none tracking-tight anim-hidden animate-fade-up delay-100">
-            <span className="block text-slate-500 font-mono text-lg md:text-xl mb-2 font-normal">
-              &gt; Hello, I'm
-            </span>
-            <span className="block text-5xl md:text-7xl lg:text-8xl text-white">
-              {profile.name.split(' ').map((word, i) => (
-                <span key={i} className={i === 1 ? 'text-gradient-neon' : ''}>{word} </span>
-              ))}
-            </span>
-          </h1>
+          <div className="mt-12 grid gap-12 items-center md:grid-cols-[1.6fr_1fr]">
+            <div className="space-y-8">
+              <h1 className="font-bold leading-tight tracking-tight anim-hidden animate-fade-up delay-100">
+                <span className="block text-slate-500 font-mono text-lg md:text-xl mb-2 font-normal">
+                  &gt; Hello, I'm
+                </span>
+                <span className="block text-4xl md:text-6xl lg:text-7xl text-white">
+                  {profile.name.split(' ').map((word, i) => (
+                    <span key={i} className={i === 1 ? 'text-gradient-neon' : ''}>{word} </span>
+                  ))}
+                </span>
+              </h1>
 
-          <div className="mt-4 flex items-center gap-3 anim-hidden animate-fade-up delay-200">
-            <span className="h-px w-12 bg-cyan-500/40" />
-            <p className="font-mono text-slate-400 text-sm md:text-base tracking-wider">
-              {profile.title}
-            </p>
-          </div>
-
-          <p className="mt-8 text-slate-400 text-lg leading-relaxed max-w-2xl anim-hidden animate-fade-up delay-300">
-            {profile.bio}
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4 anim-hidden animate-fade-up delay-400">
-            <a
-              href="#projects"
-              className="group relative bg-cyan-500/10 border border-cyan-500/30 hover:border-cyan-400 text-cyan-300 font-mono text-sm px-7 py-3.5 rounded-lg transition-all duration-300 hover:shadow-neon overflow-hidden"
-            >
-              <span className="relative z-10">[ View_Projects() ]</span>
-              <span className="absolute inset-0 bg-cyan-500/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
-            </a>
-            <a
-              href="#contact"
-              className="border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-slate-200 font-mono text-sm px-7 py-3.5 rounded-lg transition-all duration-300"
-            >
-              Contact →
-            </a>
-          </div>
-
-          {/* Stats row */}
-          <div className="mt-16 grid grid-cols-3 gap-4 max-w-lg anim-hidden animate-fade-up delay-500">
-            {[
-              { num: '3+', label: 'Projects' },
-              { num: '100', label: 'Lighthouse Score' },
-              { num: '24h', label: 'Response Time' },
-            ].map(({ num, label }) => (
-              <div key={label} className="border border-slate-800 rounded-lg p-4 text-center bg-slate-900/30">
-                <div className="font-mono text-2xl font-bold text-cyan-400">{num}</div>
-                <div className="font-mono text-xs text-slate-600 mt-1 uppercase tracking-widest">{label}</div>
+              <div className="flex flex-wrap items-center gap-3 anim-hidden animate-fade-up delay-200">
+                <span className="h-px w-12 bg-cyan-500/40" />
+                <p className="font-mono text-slate-400 text-sm md:text-base tracking-wider">
+                  {profile.title}
+                </p>
               </div>
-            ))}
+
+              <p className="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl anim-hidden animate-fade-up delay-300">
+                I build fast, clean web applications — from interactive frontends to real backend systems that actually work.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 anim-hidden animate-fade-up delay-400">
+                <a
+                  href="#projects"
+                  className="group relative bg-cyan-500/10 border border-cyan-500/30 hover:border-cyan-400 text-cyan-300 font-mono text-sm px-7 py-3.5 rounded-lg transition-all duration-300 hover:shadow-neon overflow-hidden"
+                >
+                  <span className="relative z-10">[ View_Projects() ]</span>
+                  <span className="absolute inset-0 bg-cyan-500/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                </a>
+                <a
+                  href="#contact"
+                  className="border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-slate-200 font-mono text-sm px-7 py-3.5 rounded-lg transition-all duration-300"
+                >
+                  Contact →
+                </a>
+                <a
+                  href="#contact"
+                  className="border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:border-emerald-400 hover:text-emerald-100 font-mono text-sm px-7 py-3.5 rounded-lg transition-all duration-300"
+                >
+                  WhatsApp Me →
+                </a>
+              </div>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-3 max-w-3xl anim-hidden animate-fade-up delay-500">
+                {[
+                  { num: '100/100', label: 'Lighthouse Score' },
+                  { num: '3+', label: 'Projects Delivered' },
+                  { num: '1', label: 'Year of Building' },
+                ].map(({ num, label }) => (
+                  <div key={label} className="border border-slate-800 rounded-3xl p-5 text-center bg-slate-900/40">
+                    <div className="font-mono text-2xl font-bold text-cyan-400">{num}</div>
+                    <div className="font-mono text-xs text-slate-500 mt-2 uppercase tracking-[0.3em]">{label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mx-auto w-full max-w-sm anim-hidden animate-fade-up delay-400">
+              <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-950/70 shadow-[0_30px_80px_-35px_rgba(14,165,233,0.45)]">
+                <Image
+                  src="/profile.webp"
+                  alt="Profile picture"
+                  width={520}
+                  height={520}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -147,7 +197,7 @@ export default function Page() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div className="space-y-5 text-slate-400 leading-relaxed">
+            <div className="space-y-6 text-slate-400 leading-relaxed max-w-xl">
               <p>
                 I'm a <span className="text-cyan-400 font-mono">20-year-old</span> Full-Stack developer
                 based in <span className="text-emerald-400">{profile.location}</span>, building web applications
@@ -158,10 +208,16 @@ export default function Page() {
                 the details — performance, accessibility, and user experience all matter equally.
               </p>
               <p>
-                Whether it's a React frontend hitting
-                <span className="text-cyan-400 font-mono"> 100/100 Lighthouse</span> or a Node.js
-                backend handling real-time updates — I care about the craft.
+                I started building on the web because I wanted to create things that actually work — not just look good.
+                Every project I take on gets the same obsession: clean code, fast load times, and a backend that doesn't break.
               </p>
+              <a
+                href="/waleed-cv.pdf"
+                download
+                className="inline-flex items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-6 py-3 text-sm font-mono text-cyan-200 transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-500/15 hover:text-white"
+              >
+                Download CV →
+              </a>
             </div>
 
             {/* Terminal-style info box */}
@@ -202,11 +258,18 @@ export default function Page() {
                 <h3 className="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-5">
                   // {category}
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {items.map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-slate-400 text-sm group-hover:text-slate-300 transition-colors">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/60 flex-shrink-0" />
-                      {item}
+                    <li key={item.name} className="space-y-2">
+                      <div className="flex items-center justify-between text-sm text-slate-300">
+                        <span>{item.name}</span>
+                        <span className="text-xs uppercase tracking-[0.3em] text-slate-500">{item.level}</span>
+                      </div>
+                      <div className="h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
+                        <div
+                          className={`h-full rounded-full bg-cyan-400 ${item.level === 'Proficient' ? 'w-10/12' : item.level === 'Intermediate' ? 'w-8/12' : 'w-6/12'}`}
+                        />
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -229,35 +292,63 @@ export default function Page() {
             {profile.projects.map((project) => (
               <article
                 key={project.id}
-                className="group grid md:grid-cols-[80px_1fr_auto] gap-6 items-start bg-slate-900/40 border border-slate-800 hover:border-cyan-500/30 rounded-xl p-6 md:p-8 transition-all duration-300 hover:shadow-neon-sm"
+                className="group overflow-hidden rounded-[2rem] bg-slate-900/40 border border-slate-800 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-neon-sm"
               >
-                <div className="font-mono text-5xl font-bold text-slate-800 group-hover:text-slate-700 transition-colors leading-none select-none">
-                  {project.id}
+                <div className="relative h-56 overflow-hidden bg-slate-950 md:h-72">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 720px"
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <div className="space-y-3">
-                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-100 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-400 leading-relaxed text-sm">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="font-mono text-xs bg-slate-800/80 text-slate-400 px-3 py-1 rounded-full border border-slate-700"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <div className="p-6 md:p-8">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <div className="font-mono text-5xl font-bold text-slate-800 group-hover:text-slate-700 transition-colors leading-none select-none">
+                        {project.id}
+                      </div>
+                      <h3 className="mt-4 text-2xl font-bold text-white group-hover:text-cyan-100 transition-colors">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="font-mono text-xs bg-slate-800/80 text-slate-400 px-3 py-1 rounded-full border border-slate-700"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="mt-6 text-slate-400 leading-relaxed text-sm md:text-base max-w-3xl">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <a
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-xs font-mono uppercase tracking-[0.25em] text-cyan-300 transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-500/15 hover:text-white"
+                    >
+                      Live Demo ↗
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-800 px-4 py-2 text-xs font-mono uppercase tracking-[0.25em] text-slate-300 transition-all duration-300 hover:border-cyan-500/30 hover:text-cyan-400"
+                    >
+                      GitHub ↗
+                    </a>
                   </div>
                 </div>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 flex items-center gap-2 font-mono text-xs text-slate-500 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/40 px-4 py-2 rounded-lg transition-all duration-300 self-start"
-                >
-                  View ↗
-                </a>
               </article>
             ))}
           </div>
@@ -310,6 +401,69 @@ export default function Page() {
                 <span className="font-mono text-xs text-slate-500 tracking-widest">SEND_MESSAGE.exe</span>
               </div>
               <ContactForm />
+              <div className="mt-8 border-t border-slate-800 pt-6">
+                <p className="text-xs font-mono uppercase tracking-[0.3em] text-slate-500 mb-4">
+                  Direct Contact
+                </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <a
+                    href="https://wa.me/967XXXXXXXXX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
+                  >
+                    <svg className="h-5 w-5 flex-shrink-0 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16.54 7.46a5 5 0 0 0-7.08 0l-.96.96a5 5 0 0 0 0 7.07l.9.9-1.5 4.95 4.95-1.5.9.9a5 5 0 0 0 7.07 0l.96-.96a5 5 0 0 0 0-7.07l-1.5-1.5" />
+                      <path d="M15.07 8.93a3 3 0 0 1 0 4.24l-.66.66a1 1 0 0 1-1.41 0l-1.5-1.5a1 1 0 0 1 0-1.41l.66-.66a3 3 0 0 1 4.24 0z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-slate-100">WhatsApp</p>
+                      <p className="text-slate-500">wa.me/967XXXXXXXXX</p>
+                    </div>
+                  </a>
+                  <a
+                    href="https://github.com/al-waleedcode"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
+                  >
+                    <svg className="h-5 w-5 flex-shrink-0 text-slate-400" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0.5C5.73 0.5.5 5.76.5 12.04c0 5.12 3.29 9.46 7.86 10.99.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.05-.71.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.03 1.75 2.72 1.25 3.38.95.1-.75.4-1.25.73-1.54-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.47.12-3.06 0 0 .98-.31 3.2 1.18.93-.26 1.93-.39 2.92-.39.99 0 1.99.13 2.92.39 2.23-1.49 3.2-1.18 3.2-1.18.65 1.59.24 2.77.12 3.06.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.41-5.27 5.69.41.35.78 1.03.78 2.08 0 1.5-.01 2.71-.01 3.08 0 .31.21.68.8.56 4.57-1.53 7.86-5.87 7.86-10.99C23.5 5.76 18.27.5 12 .5Z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-slate-100">GitHub</p>
+                      <p className="text-slate-500">github.com/al-waleedcode</p>
+                    </div>
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/YOUR_LINKEDIN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
+                  >
+                    <svg className="h-5 w-5 flex-shrink-0 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5Zm.02 7.499H2V21h3V10.999Zm6.5 0h-2.99V21h2.99v-5.86c0-1.5.56-2.52 1.96-2.52 1.37 0 1.39 1.33 1.39 2.58V21h3v-6.4c0-3.44-1.85-5.03-4.32-5.03-1.98 0-2.85 1.09-3.34 1.86h.03V10.999Z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-slate-100">LinkedIn</p>
+                      <p className="text-slate-500">linkedin.com/in/YOUR_LINKEDIN</p>
+                    </div>
+                  </a>
+                  <a
+                    href="mailto:your.email@example.com"
+                    className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
+                  >
+                    <svg className="h-5 w-5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16v16H4z" />
+                      <path d="m4 4 8 7 8-7" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-slate-100">Direct Email</p>
+                      <p className="text-slate-500">your.email@example.com</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
