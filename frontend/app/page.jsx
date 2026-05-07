@@ -407,7 +407,7 @@ export default function Page() {
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <a
-                    href="https://wa.me/967XXXXXXXXX"
+                    href="https://wa.me/967779484515"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
@@ -450,7 +450,7 @@ export default function Page() {
                     </div>
                   </a>
                   <a
-                    href="mailto:alwaleedzeeh1@gmail.com.com"
+                    href="mailto:alwaleedzeeh1@gmail.com"
                     className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
                   >
                     <svg className="h-5 w-5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -459,7 +459,7 @@ export default function Page() {
                     </svg>
                     <div>
                       <p className="font-semibold text-slate-100">Direct Email</p>
-                      <p className="text-slate-500">your.email@example.com</p>
+                      <p className="text-slate-500">alwaleedzeeh1@gmail.com</p>
                     </div>
                   </a>
                 </div>
