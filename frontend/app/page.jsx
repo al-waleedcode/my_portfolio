@@ -418,7 +418,7 @@ export default function Page() {
                     </svg>
                     <div>
                       <p className="font-semibold text-slate-100">WhatsApp</p>
-                      <p className="text-slate-500">wa.me/967XXXXXXXXX</p>
+                      <p className="text-slate-500">wa.me/967779484515</p>
                     </div>
                   </a>
                   <a
@@ -450,7 +450,7 @@ export default function Page() {
                     </div>
                   </a>
                   <a
-                    href="mailto:your.email@example.com"
+                    href="mailto:alwaleedzeeh1@gmail.com.com"
                     className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-sm text-slate-300 transition-all duration-300 hover:border-cyan-500/40 hover:text-white"
                   >
                     <svg className="h-5 w-5 flex-shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
