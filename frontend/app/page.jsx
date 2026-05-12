@@ -18,6 +18,7 @@ const profile = {
         { name: 'JavaScript', level: 'Proficient' },
         { name: 'Tailwind CSS', level: 'Proficient' },
         { name: 'Next.js', level: 'Intermediate' },
+        { name: 'React', level: 'Intermediate' },
       ],
     },
     {
@@ -31,7 +32,7 @@ const profile = {
       category: 'Tools',
       items: [
         { name: 'Git', level: 'Proficient' },
-        { name: 'VS Code', level: 'Intermediate' },
+        { name: 'GitHub', level: 'Proficient' },
       ],
     },
   ],
@@ -41,7 +42,7 @@ const profile = {
       title: 'Dynamic Task Management System',
       description: 'A full-stack task manager with a Node.js/Express backend and vanilla JS frontend. Features: add, edit, delete, and filter tasks — with data saved to a real database.',
       github: 'https://github.com/al-waleedcode/Task-Management-System',
-      liveDemo: '#',
+      liveDemo: null, // TODO: أضف رابط الـ deploy هنا
       image: '/task-manager.webp',
       stack: ['JavaScript', 'Node.js', 'Express', 'CSS'],
     },
@@ -50,7 +51,7 @@ const profile = {
       title: 'Minimalist Personal Portfolio',
       description: 'Built with Next.js & Tailwind CSS — achieved 100/100 Lighthouse Score using Static Site Generation.',
       github: 'https://github.com/al-waleedcode/my-portfolio',
-      liveDemo: '#',
+      liveDemo: 'https://my-portfolio-ten-xi-14.vercel.app',
       image: '/portfolio.webp',
       stack: ['Next.js', 'Tailwind CSS', 'React'],
     },
@@ -59,7 +60,7 @@ const profile = {
       title: 'Modern Landing Page',
       description: 'A high-conversion landing page for small businesses. Mobile-first responsive design with clean, maintainable code architecture.',
       github: 'https://github.com/al-waleedcode/Landing-Page',
-      liveDemo: '#',
+      liveDemo: null, // TODO: أضف رابط الـ deploy هنا
       image: '/landing-page.webp',
       stack: ['HTML5', 'CSS3', 'JavaScript ES6+'],
     },
@@ -331,6 +332,7 @@ export default function Page() {
                   </p>
 
                   <div className="mt-6 flex flex-wrap items-center gap-3">
+                    {project.liveDemo && (
                     <a
                       href={project.liveDemo}
                       target="_blank"
@@ -339,6 +341,7 @@ export default function Page() {
                     >
                       Live Demo ↗
                     </a>
+                    )}
                     <a
                       href={project.github}
                       target="_blank"
@@ -472,7 +475,7 @@ export default function Page() {
       {/* ── FOOTER ── */}
       <footer className="border-t border-slate-800/60 px-6 md:px-12 py-8 flex flex-wrap items-center justify-between gap-4">
         <span className="font-mono text-xs text-slate-600">
-          © 2025 {profile.name} — Built with Next.js & Tailwind CSS
+          © 2026 {profile.name} — Built with Next.js & Tailwind CSS
         </span>
         <span className="font-mono text-xs text-slate-700 animate-flicker">
           &lt;AW/&gt;
