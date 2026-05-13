@@ -1,10 +1,9 @@
 // Server Component - NO 'use client' هنا!
-// Next.js يسمح بـ async في Server Components
 import Image from 'next/image';
 import ContactForm from '../components/ContactForm';
 
-// ── Fallback data — يُستخدم إذا فشل الـ fetch ──
-const fallbackProfile = {
+// ── البيانات hardcoded — الخيار A (بدون باك اند) ──
+const profile = {
   name: 'AL-WALEED ZAIH',
   title: 'Full-Stack Web Developer',
   age: 20,
@@ -71,34 +70,7 @@ const fallbackProfile = {
   ],
 };
 
-// ── جلب البيانات من الباك اند ──
-async function getProfile() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  if (!apiUrl) {
-    console.warn('NEXT_PUBLIC_API_URL not set — using fallback data');
-    return fallbackProfile;
-  }
-
-  try {
-    const res = await fetch(`${apiUrl}/api/profile`, {
-      // ISR: يحدّث البيانات كل ساعة بدون إعادة build
-      next: { revalidate: 3600 },
-    });
-
-    if (!res.ok) throw new Error(`API error: ${res.status}`);
-
-    const json = await res.json();
-    return json.data;
-  } catch (err) {
-    console.error('Failed to fetch profile, using fallback:', err.message);
-    return fallbackProfile;
-  }
-}
-
-export default async function Page() {
-  // ✅ البيانات تأتي من الباك اند أو الـ fallback تلقائياً
-  const profile = await getProfile();
+export default function Page() {
 
   return (
     <main className="relative z-10 min-h-screen">
