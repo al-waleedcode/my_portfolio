@@ -5,8 +5,8 @@ import { useState } from 'react';
 // ⚠️ الخطوات:
 // 1. اذهب إلى https://formspree.io وسجّل حساب مجاني
 // 2. أنشئ form جديد واحصل على الـ ID
-// 3. ضع الـ ID هنا بدل YOUR_FORM_ID
-const FORMSPREE_ID = 'YOUR_FORM_ID';
+// 3. اضبط متغيّر البيئة NEXT_PUBLIC_FORMSPREE_ID أو ضع الـ ID هنا
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || '';
 
 export default function ContactForm() {
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
@@ -18,6 +18,11 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!FORMSPREE_ID) {
+      console.error('Missing Formspree ID (NEXT_PUBLIC_FORMSPREE_ID)');
+      setStatus('error');
+      return;
+    }
     setStatus('loading');
 
     try {
